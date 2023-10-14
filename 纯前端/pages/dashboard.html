@@ -47,7 +47,8 @@
             <li class="nav-item">
                 <a class="nav-link  active" href="../pages/dashboard.html">
                     <div class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg">
                             <title>人口分析</title>
                             <g id="dashboard" stroke="none" stroke-width="1" fill="none"
                                fill-rule="evenodd">
@@ -276,9 +277,10 @@
             </div>
         </div>
 
+
         <!--        柱状图-->
-        <div class="row my-4">
-            <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+        <div class="row m-2">
+            <div class="col-lg-6 col-md-6 mb-md-0 mb-4">
                 <div class="card shadow-xs border h-100">
                     <div class="card-header pb-0">
                         <h6 class="font-weight-semibold text-lg mb-0">Balances over time</h6>
@@ -313,17 +315,17 @@
 
             chart类用于创建一个图表容器，mb-2类用于设置图表容器的下边距为2个单位。 -->
 
-            <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+            <div class="col-lg-6 col-md-6 mb-md-0 mb-4">
                 <div class="card shadow-xs border h-100">
                     <div class="card-body py-3">
-                        <div id="test01" class="chart mb-2">
-                            <canvas id="chart-bars1" class="chart-canvas" height="240"></canvas>
+                        <div id="test01" class="chart mb-2" style="height:400px;">
+                            <!--                            <canvas id="chart-bars1" class="chart-canvas" height="240"></canvas>-->
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="test01" style="width: 600px;height:400px;"></div>
+            <!--            <div id="test01" style="width: 600px;height:400px;"></div>-->
         </div>
 
         <!--        折线图-->
