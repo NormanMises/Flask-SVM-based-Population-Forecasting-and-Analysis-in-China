@@ -38,7 +38,7 @@
         <a class="navbar-brand d-flex align-items-center m-0"
            href=" https://demos.creative-tim.com/corporate-ui-dashboard/pages/dashboard.html "
            target="_blank">
-            <span class="font-weight-bold text-lg">Corporate UI</span>
+            <span class="font-weight-bold text-lg">中国人口分析与预测</span>
         </a>
     </div>
     <div class="collapse navbar-collapse px-4  w-auto "
@@ -46,12 +46,9 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link  active" href="../pages/dashboard.html">
-                    <div
-                            class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <svg width="30px" height="30px" viewBox="0 0 48 48"
-                             version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <title>dashboard</title>
+                    <div class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
+                        <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <title>人口分析</title>
                             <g id="dashboard" stroke="none" stroke-width="1" fill="none"
                                fill-rule="evenodd">
                                 <g id="template" transform="translate(12.000000, 12.000000)"
@@ -69,7 +66,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">人口分析</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -279,7 +276,7 @@
             </div>
         </div>
 
-<!--        柱状图-->
+        <!--        柱状图-->
         <div class="row my-4">
             <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
                 <div class="card shadow-xs border h-100">
@@ -307,35 +304,29 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 在这个例子中，col-lg-4 col-md-6 mb-md-0 mb-4是用于设置卡片的列宽和间距的类名。这些类名指定了在大屏幕（lg）和中等屏幕（md）上，卡片应该占据的列数和间距。col-lg-4表示在大屏幕上占据4个列，col-md-6表示在中等屏幕上占据6个列。mb-md-0 mb-4表示在中等屏幕上不添加底部边距，而在其他屏幕上添加4个单位的底部边距。
+
+            card类用于创建一个卡片容器，shadow-xs和border类用于设置卡片的阴影和边框样式。h-100类用于设置卡片的高度为100%。
+
+            card-body类用于创建卡片的内容区域，py-3类用于设置内容区域的上下内边距为3个单位。
+
+            chart类用于创建一个图表容器，mb-2类用于设置图表容器的下边距为2个单位。 -->
+
             <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
                 <div class="card shadow-xs border h-100">
-                    <div class="card-header pb-0">
-                        <h6 class="font-weight-semibold text-lg mb-0">Balances over time</h6>
-                        <p class="text-sm">Here you have details about the balance.</p>
-                        <!--                        <div class="btn-group" role="group"-->
-                        <!--                             aria-label="Basic radio toggle button group">-->
-                        <!--                            <input type="radio" class="btn-check" name="btnradio"-->
-                        <!--                                   id="btnradio1" autocomplete="off" checked>-->
-                        <!--                            <label class="btn btn-white px-3 mb-0" for="btnradio1">12-->
-                        <!--                                months</label>-->
-                        <!--                            <input type="radio" class="btn-check" name="btnradio"-->
-                        <!--                                   id="btnradio2" autocomplete="off">-->
-                        <!--                            <label class="btn btn-white px-3 mb-0" for="btnradio2">30 days</label>-->
-                        <!--                            <input type="radio" class="btn-check" name="btnradio"-->
-                        <!--                                   id="btnradio3" autocomplete="off">-->
-                        <!--                            <label class="btn btn-white px-3 mb-0" for="btnradio3">7 days</label>-->
-                        <!--                        </div>-->
-                    </div>
                     <div class="card-body py-3">
-                        <div class="chart mb-2">
-                            <canvas id="chart-bars" class="chart-canvas" height="240"></canvas>
+                        <div id="test01" class="chart mb-2">
+                            <canvas id="chart-bars1" class="chart-canvas" height="240"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div id="test01" style="width: 600px;height:400px;"></div>
         </div>
 
-<!--        折线图-->
+        <!--        折线图-->
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow-xs border">
@@ -422,6 +413,7 @@
 <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <script src="../assets/js/plugins/swiper-bundle.min.js"
         type="text/javascript"></script>
 <script>
@@ -528,6 +520,198 @@
             },
         },
     });
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('test01'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+        // title: {
+        //     text: 'Gradient Stacked Area Chart'
+        // },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data: ['Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: 'Line 1',
+                type: 'line',
+                stack: 'Total',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+                showSymbol: false,
+                areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(128, 255, 165)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(1, 191, 236)'
+                        }
+                    ])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [140, 232, 101, 264, 90, 340, 250]
+            },
+            {
+                name: 'Line 2',
+                type: 'line',
+                stack: 'Total',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+                showSymbol: false,
+                areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(0, 221, 255)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(77, 119, 255)'
+                        }
+                    ])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [120, 282, 111, 234, 220, 340, 310]
+            },
+            {
+                name: 'Line 3',
+                type: 'line',
+                stack: 'Total',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+                showSymbol: false,
+                areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(55, 162, 255)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(116, 21, 219)'
+                        }
+                    ])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [320, 132, 201, 334, 190, 130, 220]
+            },
+            {
+                name: 'Line 4',
+                type: 'line',
+                stack: 'Total',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+                showSymbol: false,
+                areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(255, 0, 135)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(135, 0, 157)'
+                        }
+                    ])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [220, 402, 231, 134, 190, 230, 120]
+            },
+            {
+                name: 'Line 5',
+                type: 'line',
+                stack: 'Total',
+                smooth: true,
+                lineStyle: {
+                    width: 0
+                },
+                showSymbol: false,
+                label: {
+                    show: true,
+                    position: 'top'
+                },
+                areaStyle: {
+                    opacity: 0.8,
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(255, 191, 0)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(224, 62, 76)'
+                        }
+                    ])
+                },
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [220, 302, 181, 234, 210, 290, 150]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
 
     // 折线图
     var ctx2 = document.getElementById("chart-line").getContext("2d");
@@ -670,6 +854,8 @@
             },
         },
     });
+
+
 </script>
 
 <script>
