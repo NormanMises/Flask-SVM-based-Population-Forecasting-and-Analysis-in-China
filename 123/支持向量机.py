@@ -10,7 +10,7 @@ class SVM:
     def __init__(self) -> None:
         
         scaler = StandardScaler()  
-        df=pd.read_csv('人口.csv',encoding='gbk')
+        df=pd.read_csv('人口.csv')
         self.df_scaler=scaler.fit_transform(df)
         self.name=df.columns
             #X=df.filter(regex='[^自然增长率(%)]')[:-1]
