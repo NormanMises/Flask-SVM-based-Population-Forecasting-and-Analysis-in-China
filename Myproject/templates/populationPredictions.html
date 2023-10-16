@@ -85,7 +85,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link active" href="/populationPredictions">
+                <a class="nav-link active" href="/populationPredictions0">
                     <div
                             class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48"
@@ -130,6 +130,25 @@
 
         <hr class="my-0">
 
+        <div class="col mt-4">
+
+            <div class="row" style="width: 1000px;">
+                <div class="card shadow-xs border">
+                    <div class="card-body">
+                        <div id="test01" class="chart" style="height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="width: 1000px;">
+                <div class="card shadow-xs border">
+                    <div class="card-body">
+                        <div id="test02" class="chart" style="height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 </main>
@@ -143,12 +162,135 @@
 <script src="../static/js/plugins/chartjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <script src="../static/js/plugins/swiper-bundle.min.js" type="text/javascript"></script>
+
 <script>
-    // 基于准备好的dom，初始化echarts实例
+    // 获取 Flask 传递过来的数据
+    var yearsList = {{ c|tojson|safe }};
+    var realData = {{ a|tojson|safe }};
+    var predData = {{ b|tojson|safe }};
+    var i = {{ i|tojson|safe }};
+
+    // 将 Numpy 数组转换为普通的 JavaScript 数组
+    var predArray = Array.from(predData);
+
+    // 初始化 ECharts 实例
     var myChart = echarts.init(document.getElementById('test01'));
+    var table_name= ['测试集预测图','全集预测图']
+    // 配置项
+    var option = {
+        title: {
+        text: table_name[i]
+      },
+      //鼠标
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ['真实值', '预测值']
+      },
+        // ...（之前的配置保持不变）
+        xAxis: {
+            type: 'category',
+            data: yearsList,
+            name: '年份'  // 添加 x 轴名称
+        },
+        yAxis: {
+            type: 'value',
+            name: '自然增长率(%)'  // 添加 y 轴名称
+        },
+        series: [
+            {
+                name: '真实值',
+                type: 'bar',
+                data: realData
+            },
+            {
+                name: '预测值',
+                type: 'bar',
+                data: predArray
+            }
+        ]
+    };
 
-
+    // 使用配置项设置图表
+    myChart.setOption(option);
 </script>
+
+
+<script>
+    // 获取 Flask 传递过来的数据
+    var yearsList = {{ years_list|tojson|safe }};
+    var realData = {{ real|tojson|safe }};
+    var predData = {{ pred|tojson|safe }};
+
+    // 初始化 ECharts 实例
+    var myChart = echarts.init(document.getElementById('test02'));
+
+    // 配置项
+    var option = {
+        title: {
+            text: '抽样预测图'
+        },
+        tooltip: {
+            trigger: 'axis',
+            showDelay: 0,
+            axisPointer: {
+                show: true,
+                type: 'cross',
+                lineStyle: {
+                    type: 'dashed',
+                    width: 1
+                }
+            },
+            zlevel: 1
+        },
+        legend: {
+            data: ['真实值', '预测值']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            name: '年份',
+            type: 'category',
+            data: yearsList  // 使用传递过来的年份列表
+        },
+        yAxis: {
+            type: 'value',
+            name: '自然增长率(%)'
+        },
+        series: [
+            {
+                name: '真实值',
+                type: 'bar',
+                data: realData
+            },
+            {
+                name: '预测值',
+                type: 'line',
+                data: predData
+            }
+        ]
+    };
+
+    // 使用配置项设置图表
+    myChart.setOption(option);
+</script>
+
+
+
+
 
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
