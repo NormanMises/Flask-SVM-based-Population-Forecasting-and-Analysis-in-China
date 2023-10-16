@@ -1,0 +1,137 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=line-simple&code=PYBwLglsB2AEC8sDeAoWtJgDYFMBcq66YOAHmHrAOSDC5oLOJgf2pVqwC-ANC2MMFpCJUJEwAJwgBzcThGUqAQ1IQAzlU5FYC5QAVgEaCRnIW6sAE8Q-akoAWcgCbAA7s3WsWHFuLF3Bx2LgAzCmoAZgBSVT8xcWtgqgAWCLUiACNgMG4AW1lwyPUAYxgwOT0AGTkUnCxKUQBXHHdk0gBBRSVKAG0_IRNzSyp8uRJxYBFTPPVYOyG5TqpAFz1AX7k8qkAvxUB8V0AuuUBj5QAKQHA5AEoVwG4DHYPN47UqQFo5QF-1TcBxdQBxLWbdwDj_QGFFQELoq7RbndAOQGgGolQAr1oBo-V2gEhjQDmjoBnTXW8AAjAAGVH_aiAOfVAOKp51xAGpAIZygEVzFHozFUUk7FbfQCKioAjY02gEQbQCAeoBxG0A4c4re6ARh1AFhy532lyoAF1kupNEoACoQfIAa18kyIciwEmgAHUIGBrOVKtUMCJ6n50B5JW09VVYIIAPQ2wAK6oBwC0ALvGAbiVAGV6jsAft6AELdAB9ugGdFQB90YA7f0AQAwm5WTAKjTJDAzW2ABWrQfKQGC7EByERyTJKQ49KNF2AAN2zsGgOEcWmzuaUADlczgELAAEStgDcdtggABzQATfoAfo0ApcaABCMfYB1bUAZN6AJjlI8Xi2WRLAszm843Mjh67VMpUl4gV3WAHS4aDiHVdm2wQB52oBRNO9PsAVHKAB1M5_Oo4vlyJgCWIHZN9vdxbeIL1gQB560AGQjAF-AwA-M0ALk8J0fF832Q0tyy_Rwtx3aQWwAWSGaxD3yHAICwTNazXJtMMAy8QC_H8_yo6RDhAhlwJ9QBd6MAGH_AAB0wBAyLgwADxXAzjAEQVQAoOUANeVABdTV8UKIG0ACoFNkuT0AU2BABIlQBa03vZ9AHozQAyFUAck1ADi5QARyMALO1EM42BACDNQAc81MzjAEwlQBt-PA1jABBNQAwFzs-zAFg5JzAGdlQBJbxMwA0I0AeB0TM43lABX4wA9tUAfOVvRU1SFJtNKUO7QBDc0AN7kQsAGBUTPQxiRAAPmRLLkIgAJYDI1cG0ogDsPKz9v1_f8sJEQ4jFU7KlNgQAq_UAeudQMAADlwPYEBAAsI2DwNgDLqtUmMl12D8QBbVEO2XWAAB5YFKlqRB2kACQJXrC365CPxITIQAAZVEFt2xAuaJsAQmtACojCSJxnZbrtQpclGKEQwBbTb1NojqGOOkDAAB9QBpzR-n1AFl5EMAeuj8cGgOwWxB7NwYJdr6K63cQMAZb9AH1zFH0cx_ru0AE2tPMATydACjrHye0AOBVJp9QAiX0AVH1AB4FenVNq-rNvgRAju62AAFpYGRS7RcB7tufGj7_NYlXrrux7nv3cilEPJRahSEGxFPXYCbB9hlyN9cyaYjsdeQ1hYCqJRmyuwHssvT7hynadADc9bXfd1nB7qevd7cak2zYtvRxGt0GwDtnG7F64nWwAHWgTtXbfNxw-QytqwdptYAJRA9ejkD-wHMcg8L5Vi9gFu2A9rAvb6kvlW7QAwHUAc9N7yFwBpWMATb9AAbTVK--VMua0ax2IaNl257YDu7QH_s_unRKO5EHAwFqEQ4AXiuN0xtwsuvvw2_FFhTFaZROm6SMzAsWQyyweoXCIe_khezEDgdosAujqB9tAJssgAAiEBD5pgmL0T-1AUjZiQakbMWo7A6lkAANlREkSM0xiidDlqiQ88QACcdsABMlCAAcdtyGHioQAVmYRQthIROGHlRBw2AFDaG8ORDw-WQimHiNYWw0Ud8WCyNYB2IAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+    var wight_data = {{ wight_data|tojson }}
+  option = {
+  title:{
+    text: '权重图'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: ['年份',
+ '出生人口(万)',
+ '总人口(万人)',
+ '中国人均GPA(美元计)',
+ '中国性别比例(按照女生=100)',
+ '城镇人口(城镇+乡村=100)',
+ '乡村人口',
+ '美元兑换人民币汇率',
+ '中国就业人口(万人)'],
+      axisTick: {
+        alignWithLabel: true
+      },
+    axisLabel : {//坐标轴刻度标签的相关设置。
+                formatter : function(params){
+                   var newParamsName = "";// 最终拼接成的字符串
+                        var paramsNameNumber = params.length;// 实际标签的个数
+                        var provideNumber = 4;// 每行能显示的字的个数
+                        var rowNumber = Math.ceil(paramsNameNumber / provideNumber);// 换行的话，需要显示几行，向上取整
+                        /**
+                         * 判断标签的个数是否大于规定的个数， 如果大于，则进行换行处理 如果不大于，即等于或小于，就返回原标签
+                         */
+                        // 条件等同于rowNumber>1
+                        if (paramsNameNumber > provideNumber) {
+                            /** 循环每一行,p表示行 */
+                            for (var p = 0; p < rowNumber; p++) {
+                                var tempStr = "";// 表示每一次截取的字符串
+                                var start = p * provideNumber;// 开始截取的位置
+                                var end = start + provideNumber;// 结束截取的位置
+                                // 此处特殊处理最后一行的索引值
+                                if (p == rowNumber - 1) {
+                                    // 最后一次不换行
+                                    tempStr = params.substring(start, paramsNameNumber);
+                                } else {
+                                    // 每一次拼接字符串并换行
+                                    tempStr = params.substring(start, end) + "\n";
+                                }
+                                newParamsName += tempStr;// 最终拼成的字符串
+                            }
+  
+                        } else {
+                            // 将旧标签的值赋给新标签
+                            newParamsName = params;
+                        }
+                        //将最终的字符串返回
+                        return newParamsName
+                }
+
+            }
+
+
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Direct',
+      type: 'bar',
+      barWidth: '60%',
+      data: wight_data
+      
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
