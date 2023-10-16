@@ -19,7 +19,7 @@ def populationAnalysis():
     pre = ['年份', '出生人口', '总人口', '人均GPA', '性别比例', '就业人口', '城镇人口', '乡村人口',
            '美元兑换人民币汇率']
 
-    wight_data = list(svm.get_wight())
+    wight_data = list(svm.get_wight()[0])
     print(type(wight_data))
 
     return render_template("populationAnalysis.html", x=x, pre=pre, wight_data=wight_data)
