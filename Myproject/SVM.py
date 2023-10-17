@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from flask import url_for
 from sklearn import svm
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
@@ -8,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 class SVM:
     def __init__(self) -> None:
         self.scaler = StandardScaler()
-        self.df = pd.read_csv('./data/ChinaPopulation.csv')
+        self.df = pd.read_csv(url_for('./data/ChinaPopulation.csv'))
         self.df_scaler = self.scaler.fit_transform(self.df)
         self.name = self.df.columns
         # X=df.filter(regex='[^自然增长率(%)]')[:-1]
