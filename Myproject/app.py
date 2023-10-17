@@ -1,3 +1,4 @@
+import pandas as pd
 from flask import Flask, render_template
 
 from SVM import SVM
@@ -27,7 +28,22 @@ def populationAnalysis():
 
 @app.route("/populationPredictions", methods=["POST", "GET"])
 def populationPredictions():
-    return render_template("populationPredictions.html")
+    a, b, c = svm.get_real_and_y_pred()
+    a = list(a)
+    b = list(b)
+    # 读取全部数据
+    pred_data = pd.read_csv('Myproject/data/ChinaPopulation.csv', encoding='utf-8')
+    # 从数据框中随机抽取20个样本
+    random_sample = pred_data.sample(n=20, random_state=42)  # 设置 random_state 以确保结果可重复
+    # 按照年份从小到大排序
+    sorted_sample = random_sample.sort_values(by='年份')
+    # 取出年份并放到列表中
+    years_list = sorted_sample['年份'].tolist()
+    # 取出真实值放入列表中
+    real_y = sorted_sample['自然增长率(%)'].tolist()
+    # 用支持向量机计算预测值放入列表中
+    pred_y = svm.pred(sorted_sample).tolist()
+    return render_template("populationPredictions.html", years_list=years_list, real=real_y, pred=pred_y, a=a, b=b, c=c)
 
 
 # @app.route("/update/<int:id>", methods=["GET", "POST"])
