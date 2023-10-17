@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-from flask import url_for
 from sklearn import svm
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
