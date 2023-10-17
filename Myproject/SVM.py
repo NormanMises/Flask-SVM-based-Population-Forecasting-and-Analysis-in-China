@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 class SVM:
     def __init__(self) -> None:
         self.scaler = StandardScaler()
-        self.df = pd.read_csv(url_for('./data/ChinaPopulation.csv'))
+        self.df = pd.read_csv('./data/ChinaPopulation.csv')
         self.df_scaler = self.scaler.fit_transform(self.df)
         self.name = self.df.columns
         # X=df.filter(regex='[^自然增长率(%)]')[:-1]
