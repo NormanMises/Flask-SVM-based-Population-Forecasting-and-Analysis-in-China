@@ -8,11 +8,11 @@ from sklearn.preprocessing import StandardScaler
 class SVM:
     def __init__(self) -> None:
         self.scaler = StandardScaler()
-        self.df = pd.read_csv('./data/ChinaPopulation.csv')
+        self.df = pd.read_csv('./data/ChinaPopulation2.csv')
         self.df_scaler = self.scaler.fit_transform(self.df)
         self.name = self.df.columns
         # X=df.filter(regex='[^自然增长率(%)]')[:-1]
-        y = np.array(self.df['自然增长率(%)'])[1:]  # 明年自然增长率
+        y = np.array(self.df['明年自然增长率(%)'])  # 明年自然增长率
         self.y = y
 
         X_scaled = self.df_scaler[:, :-1]
@@ -20,7 +20,7 @@ class SVM:
         # 手动划分数据集
         # X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
         train = [i for i in range(40)]
-        test = [i for i in range(40, 49)]
+        test = [i for i in range(40, 50)]
         X_train, X_test, y_train, y_test = X_scaled[train], X_scaled[test], y[train], y[test]
 
         # 初始化SVM回归模型
@@ -42,7 +42,7 @@ class SVM:
 
     # 处理新的数据
     def pred(self, data):
-        y = data['自然增长率(%)']
+        y = data['明年自然增长率(%)']
         X = self.scaler.transform(data)[:, :-1]
         return self.svr.predict(X)
 
@@ -62,17 +62,19 @@ class SVM:
     def get_real_and_y_pred(self, all=0):
         if all == 0:
             # 如果不指定要全部（all==0），就只返回测试集的数据（2011年以后的）
-            date = [2011 + i for i in range(9)]
+            date = [2011 + i for i in range(10)]
             return self.y_test, self.y_pred, date
         # 如果指定了要全部（all！=0），就只返回所有的数据
-        date = [1971 + i for i in range(49)]
+        date = [1971 + i for i in range(50)]
         return self.y, self.y_pred_all, date
 
 
 if __name__ == '__main__':
     svm = SVM()
-    data = svm.read()
+    _,y_=svm.read_scaler()
+    print(list(y_[:,-1]))
+'''    data = svm.read()
     data10 = data.sample(n=10)
     print(type(data10))
     y_ = svm.pred(data10)
-    print(list(y_))
+    print(list(y_))'''
