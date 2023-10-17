@@ -37,9 +37,9 @@ def populationPredictions(i=0):
     # 按照年份从小到大排序
     sorted_sample = random_sample.sort_values(by='年份')
     # 取出年份并放到列表中
-    years_list = sorted_sample['年份'].tolist()
+    years_list = (sorted_sample['年份']+1).tolist()
     # 取出真实值放入列表中
-    real_y = sorted_sample['自然增长率(%)'].tolist()
+    real_y = sorted_sample['明年自然增长率(%)'].tolist()
     # 用支持向量机计算预测值放入列表中
     pred_y = svm.pred(sorted_sample).tolist()
     return render_template("populationPredictions.html", years_list=years_list, real=real_y, pred=pred_y, a=a, b=b, c=c,
