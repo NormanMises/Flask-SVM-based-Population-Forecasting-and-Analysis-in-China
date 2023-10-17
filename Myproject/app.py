@@ -1,4 +1,3 @@
-import pandas as pd
 from flask import Flask, render_template
 
 from SVM import SVM
@@ -21,14 +20,14 @@ def populationAnalysis():
            '美元兑换人民币汇率']
 
     wight_data = list(svm.get_wight()[0])
-    print(type(wight_data))
+    # print(type(wight_data))
 
     return render_template("populationAnalysis.html", x=x, pre=pre, wight_data=wight_data)
 
 
 @app.route("/populationPredictions<int:i>", methods=["POST", "GET"])
 def populationPredictions(i=0):
-    a, b ,c= svm.get_real_and_y_pred(all=i)
+    a, b, c = svm.get_real_and_y_pred(all=i)
     a = list(a)
     b = list(b)
     # 读取全部数据
@@ -43,7 +42,8 @@ def populationPredictions(i=0):
     real_y = sorted_sample['自然增长率(%)'].tolist()
     # 用支持向量机计算预测值放入列表中
     pred_y = svm.pred(sorted_sample).tolist()
-    return render_template("populationPredictions.html", years_list=years_list,real=real_y, pred=pred_y,a=a,b=b,c=c,i=i)
+    return render_template("populationPredictions.html", years_list=years_list, real=real_y, pred=pred_y, a=a, b=b, c=c,
+                           i=i)
 
 
 # @app.route("/update/<int:id>", methods=["GET", "POST"])
